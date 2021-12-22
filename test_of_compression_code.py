@@ -12,4 +12,7 @@ h = compression(path_of_File)
 output_path = h.compress_file()
 print("Compressed file path: " + output_path)
 
+decom_path = h.decompress_file(output_path)
+print("Decompressed file path: " + decom_path)
+
 
