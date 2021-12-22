@@ -107,3 +107,50 @@ class compression:
         print("The file is compressed...")
         return output_path
     # This function is used for compressing the text file
+def decode_text(self, encoded_text):
+        current_code = ""
+        decoded_text = ""
+
+        for bit in encoded_text:
+            current_code += bit
+            if (current_code in self.reverse_mapping):
+                character = self.reverse_mapping[current_code]
+                decoded_text += character
+                current_code = ""
+
+        return decoded_text
+    # This function is used for decoding the text file and return it
+    def delecte_padding(self, padded_text):
+        padded_information = padded_text[:8]
+        extra_padding = int(padded_information, 2)
+
+        padded_text = padded_text[8:]
+        encoded_text = padded_text[:-1 * extra_padding]
+
+        return encoded_text
+    # This function is used for deleting padding from the text file
+    def decompress_file(self, input_path):
+        file_name, file_extension = os.path.splitext(self.File_path)
+        output_path = file_name + "_decompressed_file" + ".txt"
+
+        with open(input_path, 'rb') as file, open(output_path, 'w') as output_file:
+            bit_string = ""
+
+            byte = file.read(1)
+            while (len(byte) > 0):
+                byte = ord(byte)
+                bits = bin(byte)[2:].rjust(8, '0')
+                bit_string += bits
+                byte = file.read(1)
+
+            encoded_text = self.delecte_padding(bit_string)
+
+            decompressed_text = self.decode_text(encoded_text)
+
+            output_file.write(decompressed_text)
+
+        print("The file is decompressed... ")
+        return output_path
+    # This function is used for decompressing the text file and return it
+    # i decompress file to check the compression algorithm doesn't change in original file 
+    
