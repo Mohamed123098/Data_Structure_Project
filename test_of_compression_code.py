@@ -14,5 +14,5 @@ print("Compressed file path: " + output_path)
 
 decom_path = h.decompress_file(output_path)
 print("Decompressed file path: " + decom_path)
-
+#this code which i used to check the compression code is working correct
 
