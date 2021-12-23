@@ -6,10 +6,6 @@ def func_formatting(content):
 	for i in range (len(content)):
 		y="</" in content[i]
 		t=content[i].find("<")
-		if i<len(content)-1 :
-			next=content[i+1].find("<")
-		if i>0:
-			previous=content[i-1].find("<")
 		if t== -1 :
 			x=False 
 		else :
@@ -19,18 +15,11 @@ def func_formatting(content):
 			else :
 				x=False 
 		if not (x and y) :
-			if t != -1 and not next :
-				content[i]="    "*num+content[i]+"\n"
-			if next ==-1:
-				content[i]="    "*num+content[i]
+			content[i]="    "*num+content[i]+"\n"
 		if x and not y:
 			num=num+1
 		elif  x and y :
 				num=num-1
-				if previous ==-1: 
-					content[i]=content[i]+"\n"
-				else :
-					content[i]="    "*num+content[i]+"\n"
+				content[i]="    "*num+content[i]+"\n"
 		file=file+content[i] 	
-
 	return file
