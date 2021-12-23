@@ -1,4 +1,4 @@
-def convertToJson(contents):
+def convertToJson(user_list):
    jid='"id": '
    jname='"name": '
    jposts='"posts": '
@@ -11,9 +11,9 @@ def convertToJson(contents):
    json_file='{\n  "users": {\n    "user": '
    json_indet="\n      " # 6 double spaces
    unit_indent="  "        # double space
-   contents=contents.replace("  " ,"")                     # remove all double spaces Not space to keep the names separated     (Ahmed Ali NOT AhmedAli)
-   contents=contents.replace("\n","")        
-   user_list=contents.split("<user>")                      # split the file according to <user> to deal with single user at a time 
+   user_list=user_list.replace("  " ,"")                     # remove all double spaces Not space to keep the names separated     (Ahmed Ali NOT AhmedAli)
+   user_list=user_list.replace("\n","")        
+   user_list=user_list.split("<user>")                      # split the file according to <user> to deal with single user at a time 
    user_list=user_list[1:]                                 # first element is not counted (<users>)
    if len(user_list)==1:                                   # for one user we put only { after user
       json_file+="{"
@@ -54,7 +54,7 @@ def convertToJson(contents):
             json_indet+=unit_indent
       
       for postx in post_list:                              #  uncomment this line
-         if len(post_list)>=1:
+         if len(post_list)>=2:                             # 1 ==> 2
             json_file+=json_indet+"{"
          json_indet+=unit_indent
          json_file+=json_indet+jbody
@@ -67,7 +67,7 @@ def convertToJson(contents):
          topic_list=topic_list[1:]
 
          if(len(topic_list)==0) :                          # empty topic list
-            json_file+="null"
+            json_file+="nulll"
          else:                                             # one or more (topic)s
             json_file+="{"
             json_indet+=unit_indent
