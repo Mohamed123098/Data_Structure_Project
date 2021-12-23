@@ -399,5 +399,5 @@ class Ui_MainWindow(object):
         self.actionopen.setStatusTip(_translate("MainWindow", "Choose the XML file that will be used "))
         self.actionopen.setShortcut(_translate("MainWindow", "Ctrl+O"))
         self.actionSave.setText(_translate("MainWindow", "Save"))
-        self.actionSave.setStatusTip(_translate("MainWindow", "Save the output file "))
+        self.actionSave.setStatusTip(_translate("MainWindow", "Save the output of the last executed operation in a file "))
         self.actionSave.setShortcut(_translate("MainWindow", "Ctrl+S"))
