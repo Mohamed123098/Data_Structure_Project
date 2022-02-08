@@ -4,6 +4,9 @@ import XML_to_JSON
 import file_formatting 
 from compression_code import compression                            
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+import visualcode
+
 class Ui(Ui_MainWindow):
     filePath=""
     XML_contents="" 
@@ -19,6 +22,7 @@ class Ui(Ui_MainWindow):
         self.formattingButton.clicked.connect(self.formatting_XML_file) 
         self.compressButton.clicked.connect(self.compressFunc) 
         self.consistencyButton.clicked.connect(self.consistencyFunc)  
+        self.graphButton.clicked.connect(self.visualizefunc) 
 
     def open_XML_file(self,filePath):         
         with open(filePath,encoding='utf-8') as f:
@@ -55,6 +59,9 @@ class Ui(Ui_MainWindow):
         self.outputPlain.setPlainText(consist)
         self.flag=1  
 
+    def visualizefunc(self):
+        visualcode.visualize(self.filePath[0])
+
     def saveFile(self):
         if self.flag==1 :
             fileName="cosistency_checking.txt"
@@ -82,5 +89,5 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui()
-    MainWindow.showMaximized()
+    MainWindow.show()
     sys.exit(app.exec_())        
