@@ -5,7 +5,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1978, 1047) 
+        MainWindow.resize(1820, 920) 
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -181,8 +181,14 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.compressButton.setFont(font)
         self.compressButton.setObjectName("compressButton")
+        self.graphButton = QtWidgets.QPushButton(self.centralwidget)
+        self.graphButton.setGeometry(QtCore.QRect(32, 440, 271, 41))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.graphButton.setFont(font)
+        self.graphButton.setObjectName("graphButton")
         self.outputPlain = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.outputPlain.setGeometry(QtCore.QRect(1150, 79, 711, 861))
+        self.outputPlain.setGeometry(QtCore.QRect(1080, 80, 711, 861))
         font = QtGui.QFont()
         font.setPointSize(9)
         self.outputPlain.setFont(font)
@@ -353,7 +359,7 @@ class Ui_MainWindow(object):
         self.inputLabel.setFont(font)
         self.inputLabel.setObjectName("inputLabel")
         self.outputLabel = QtWidgets.QLabel(self.centralwidget)
-        self.outputLabel.setGeometry(QtCore.QRect(1430, 10, 171, 51))
+        self.outputLabel.setGeometry(QtCore.QRect(1370, 10, 171, 51))
         font = QtGui.QFont()
         font.setPointSize(22)
         font.setBold(True)
@@ -384,6 +390,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Processing XML file"))
@@ -400,4 +407,5 @@ class Ui_MainWindow(object):
         self.actionopen.setShortcut(_translate("MainWindow", "Ctrl+O"))
         self.actionSave.setText(_translate("MainWindow", "Save"))
         self.actionSave.setStatusTip(_translate("MainWindow", "Save the output of the last executed operation in a file "))
-        self.actionSave.setShortcut(_translate("MainWindow", "Ctrl+S"))
+        self.actionSave.setShortcut(_translate("MainWindow", "Ctrl+S"))       
+        self.graphButton.setText(_translate("MainWindow", "show the graph"))       
